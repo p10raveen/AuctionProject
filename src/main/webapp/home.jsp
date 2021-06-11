@@ -49,8 +49,20 @@ String email = (String) session.getAttribute("email");
 	</div>
 	<div class=row>
 		<!-- Live Bidding -->
-		<div class="col-md-6"></div>
-		<div class="col-md-6"></div>
+		<div class="col-md-6">
+		<!-- Product Information -->
+			<jsp:include page="LiveAuction.jsp">
+				<jsp:param name="b_id" value="<%=b_id %>"/>
+			
+			</jsp:include>
+		</div>
+		<div class="col-md-6">
+		<!-- Auction Input and LIve Report -->
+			<jsp:include page="TakeBid.jsp">
+				<jsp:param name="b_id" value="<%=b_id %>"/>
+			
+			</jsp:include>
+		</div>
 	</div>
 	<div class=row>
 		<div class="col-md-4">
