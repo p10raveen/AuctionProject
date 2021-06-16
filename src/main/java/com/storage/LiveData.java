@@ -3,6 +3,7 @@ package com.storage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,7 +41,35 @@ public class LiveData {
 		}
 		return b;
 	}
-	
+	public static String UpdateCurrentAuction(int a_id, String new_amount)
+	{
+		Connection con = null;
+		String  i="";
+		try
+		{
+			con = DBConnect.takeConnection();
+			String query = "Update current_auction set current_price=? where auction_id=?";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1,new_amount);
+			ps.setInt(2, a_id);
+			ps.executeUpdate();
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return i;
+	}
 	public static int getAuctionId()
 	{
 		int i=0;

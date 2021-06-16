@@ -62,6 +62,10 @@ String email = (String) session.getAttribute("email");
 				<jsp:param name="b_id" value="<%=b_id %>"/>
 			
 			</jsp:include>
+			<hr/>
+						<jsp:include page="setBid.jsp">
+						<jsp:param name="b_id" value="<%= b_id %>"/>
+						</jsp:include>
 		</div>
 	</div>
 	<div class=row>
